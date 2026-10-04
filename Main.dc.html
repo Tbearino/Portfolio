@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Teja Perko Portfolio</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&amp;family=Work+Sans:wght@400;500;700&amp;family=Bebas+Neue&amp;family=Cormorant+Garamond:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#111111}
+a{color:#F4F1E8}
+.nav a{text-decoration:none;color:#F4F1E8;font-weight:700;font-size:15px;letter-spacing:0.02em;text-transform:uppercase;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-bottom-color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 22px;border-radius:999px;border:2px solid var(--acc);color:var(--acc);text-decoration:none;font-weight:700;font-size:15px;transition:background .25s ease,color .25s ease}
+.btn:hover{background:var(--acc);color:#111111}
+.btn-solid{display:inline-flex;align-items:center;min-height:48px;padding:0 28px;border-radius:999px;background:var(--acc);color:#111111;text-decoration:none;font-weight:700;transition:transform .25s ease}
+.btn-solid:hover{transform:translateY(-3px) rotate(-1deg);color:#111111}
+.tag{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#A9A59A}
+.pt{margin:0;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:24px;line-height:1.1}
+.pd{margin:0;color:#D9D5C9;font-size:16px}
+.strip{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:28px}
+.strip::-webkit-scrollbar{height:8px}
+.strip::-webkit-scrollbar-thumb{background:var(--acc);border-radius:4px}
+.pcard{flex:none;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px}
+.poster{position:relative;overflow:hidden;border-radius:10px;outline:2px solid transparent;outline-offset:3px;transition:outline-color .25s ease}
+.pcard:hover .poster{outline-color:var(--acc)}
+.art{transition:transform .6s ease}
+.pcard:hover .art{transform:scale(1.06)}
+.hword{font-family:'Syne','Work Sans',sans-serif;font-weight:800;text-transform:uppercase;line-height:0.92;letter-spacing:-0.02em;color:#F4F1E8;animation:flash 6s ease-in-out infinite}
+@keyframes flash{0%,28%{color:#F4F1E8}33%,58%{color:var(--acc)}64%,100%{color:#F4F1E8}}
+.thread{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.float{animation:floaty 7s ease-in-out infinite alternate}
+@keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-18px)}}
+.drift{animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,-40px) scale(1.2)}}
+.ticker{display:flex;width:max-content;animation:tick 30s linear infinite}
+@keyframes tick{to{transform:translateX(-50%)}}
+.pulse{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+.bn{position:relative;overflow:hidden;flex:none;border-radius:6px}
+.f1{animation:f1 8s infinite}
+@keyframes f1{0%,40%{opacity:1;transform:none}46%,94%{opacity:0;transform:translateY(-22px)}100%{opacity:1;transform:none}}
+.f2{animation:f2 8s infinite;opacity:0}
+@keyframes f2{0%,44%{opacity:0;transform:translateY(26px)}52%,90%{opacity:1;transform:none}98%,100%{opacity:0;transform:translateY(26px)}}
+.grow{animation:grow 4s ease-in-out infinite alternate}
+@keyframes grow{from{transform:scale(0.6)}to{transform:scale(1.15)}}
+.bump{animation:bump 1.6s ease-in-out infinite}
+@keyframes bump{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.spin{animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.hword,.float,.drift,.ticker,.pulse,.grow,.bump,.spin{animation:none}.f1{animation:none}.f2{animation:none;opacity:0}.thread{animation:none;stroke-dashoffset:0}}
+@supports (animation-timeline: view()){.reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}}
+@keyframes rise{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div style="--acc:{{accent}};--ftr:{{footer}};width:100%;background:#111111;color:#F4F1E8;font-family:'Work Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;overflow:hidden">
+
+<!-- HERO -->
+<div style="position:relative;overflow:hidden;background:#111111">
+<div class="drift" style="position:absolute;top:60px;right:4%;width:420px;height:420px;border-radius:50%;background:var(--acc);opacity:0.28;filter:blur(90px);pointer-events:none"></div>
+<div class="drift" style="position:absolute;top:340px;left:-100px;width:340px;height:340px;border-radius:50%;background:#00E000;opacity:0.18;filter:blur(90px);pointer-events:none;animation-delay:-5s"></div>
+<div class="drift" style="position:absolute;bottom:-60px;right:30%;width:360px;height:360px;border-radius:50%;background:#2F5BFF;opacity:0.22;filter:blur(100px);pointer-events:none;animation-delay:-9s"></div>
+<div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,0.035) 0px,rgba(255,255,255,0.035) 1px,transparent 1px,transparent 4px);pointer-events:none"></div>
+<svg viewBox="0 0 600 900" preserveAspectRatio="xMaxYMid slice" style="position:absolute;top:0;right:0;width:52%;height:100%;pointer-events:none;opacity:0.9" aria-hidden="true">
+<path class="thread" pathLength="1" d="M540 -10 C540 150 90 190 140 380 S570 520 420 700 S170 800 320 920" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round"></path>
+</svg>
+<div style="position:relative;max-width:1200px;margin:0 auto;padding:28px 32px 96px;box-sizing:border-box">
+<div style="display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;justify-content:space-between">
+<div style="font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:32px;letter-spacing:-0.02em;text-transform:uppercase">Teja</div>
+<div class="nav" style="display:flex;flex-wrap:wrap;gap:12px 28px">
+<a href="#top" style="border-bottom-color:var(--acc)">Home</a>
+<a href="#work">Work</a>
+<a href="#banners">Banners</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+<div id="top" style="display:flex;flex-direction:column;gap:32px;padding-top:80px">
+<div style="display:flex;align-items:center;gap:12px;font-size:14px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase"><span class="pulse" style="width:12px;height:12px;border-radius:50%;background:#E5483A;display:inline-block"></span>Teja Perko · Multimedia designer</div>
+<h1 style="margin:0;display:flex;flex-direction:column;gap:6px;font-size:clamp(52px,12vw,176px)">
+<span class="hword">Media.</span>
+<span class="hword" style="animation-delay:2s">Creative.</span>
+<span class="hword" style="animation-delay:4s">Tech.</span>
+</h1>
+<p style="margin:0;max-width:560px;font-size:clamp(18px,2vw,22px);line-height:1.4">I shoot it, I animate it and I build it. One person who blends media, creativity and technology.</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px">
+<a class="btn-solid" href="#work">See the work</a>
+<a class="btn" href="mailto:teja.perko1@gmail.com">Say hello</a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- THREE PILLARS -->
+<div style="max-width:1200px;margin:0 auto;padding:24px 32px 24px;box-sizing:border-box">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0">
+<div style="padding:24px 32px 24px 0;display:flex;flex-direction:column;gap:10px">
+<a href="#work" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:#F4F1E8;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px)">Media <svg width="44" height="28" viewBox="0 0 44 28" aria-hidden="true"><path d="M2 16 C14 8 26 8 38 14 M30 5 L40 14 L29 23" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+<span style="color:#B9B4A6">Video, photography and sound.</span>
+</div>
+<div style="padding:24px 32px;border-left:1px solid rgba(244,241,232,0.2);display:flex;flex-direction:column;gap:10px">
+<a href="#banners" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:#F4F1E8;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px)">Creative <svg width="44" height="28" viewBox="0 0 44 28" aria-hidden="true"><path d="M2 16 C14 8 26 8 38 14 M30 5 L40 14 L29 23" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+<span style="color:#B9B4A6">Animation, design and banners.</span>
+</div>
+<div style="padding:24px 0 24px 32px;border-left:1px solid rgba(244,241,232,0.2);display:flex;flex-direction:column;gap:10px">
+<a href="#web" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:#F4F1E8;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:clamp(30px,4vw,46px)">Tech <svg width="44" height="28" viewBox="0 0 44 28" aria-hidden="true"><path d="M2 16 C14 8 26 8 38 14 M30 5 L40 14 L29 23" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+<span style="color:#B9B4A6">Websites and code, with AI as a tool.</span>
+</div>
+</div>
+</div>
+
+<!-- TAPE -->
+<div style="margin:56px -24px 40px;background:var(--acc);color:#111111;transform:rotate(-1.5deg);padding:14px 0;overflow:hidden">
+<div class="ticker" style="font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:26px;letter-spacing:0.02em;text-transform:uppercase;white-space:nowrap">
+<span style="padding-right:32px">Video · Animation · UI and UX · Web · Photography · Banners · Sound ·</span>
+<span style="padding-right:32px">Video · Animation · UI and UX · Web · Photography · Banners · Sound ·</span>
+<span style="padding-right:32px">Video · Animation · UI and UX · Web · Photography · Banners · Sound ·</span>
+<span style="padding-right:32px">Video · Animation · UI and UX · Web · Photography · Banners · Sound ·</span>
+</div>
+</div>
+
+<!-- WORK -->
+<div id="work" style="padding-top:64px">
+<div style="max-width:1200px;margin:0 auto;padding:0 32px;box-sizing:border-box">
+<h2 style="margin:0;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:clamp(72px,17vw,230px);line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase">Work</h2>
+<p style="margin:24px 0 40px;max-width:620px;color:#B9B4A6">Animation and video made for a national parliament, a university and the people in between. Scroll sideways for more.</p>
+</div>
+<div class="strip" style="padding-left:max(32px,calc((100% - 1200px) / 2 + 32px));padding-right:32px">
+
+<!-- Constitution -->
+<div class="pcard" style="width:300px">
+<div class="poster" style="aspect-ratio:4/5;background:#F4EBD9">
+<div class="art" style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:8px;padding:14px;box-sizing:border-box">
+<div style="grid-column:span 2;background:#F2B705;border:3px solid #111111;border-radius:6px;display:flex;align-items:center;justify-content:center"><svg width="72" height="72" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22" fill="none" stroke="#111111" stroke-width="4"></circle><path d="M32 16v32M16 32h32" stroke="#111111" stroke-width="4"></path></svg></div>
+<div style="background:#2F5BFF;border:3px solid #111111;border-radius:6px"></div>
+<div style="background:#FF1FB4;border:3px solid #111111;border-radius:6px"></div>
+<div style="grid-column:span 2;background:#FFFDF6;border:3px solid #111111;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:34px;color:#111111">§ 1</div>
+</div>
+</div>
+<div class="tag">Animation · National Assembly</div>
+<h3 class="pt">The constitution as a comic</h3>
+<p class="pd">I animated a comic version of the constitution and added sound. Then I put it all together as one piece made for children.</p>
+<div><a class="btn" href="https://www.dz-rs.si/wps/portal/Home/is/ZaOtroke/StripUstava">Open the comic</a></div>
+</div>
+
+<!-- ParlEU 2021 -->
+<div class="pcard" style="width:300px">
+<div class="poster" style="aspect-ratio:4/5;background:#1D2F6F">
+<div class="art" style="position:absolute;inset:0">
+<span class="float" style="position:absolute;left:8%;top:8%;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:38px;color:#F4F1E8">Hello</span>
+<span class="float" style="position:absolute;left:44%;top:22%;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:28px;color:#FF1FB4;animation-delay:-2s">Bonjour</span>
+<span class="float" style="position:absolute;left:10%;top:38%;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:32px;color:#F2B705;animation-delay:-4s">Hallo</span>
+<span class="float" style="position:absolute;left:48%;top:50%;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:44px;color:#F4F1E8;animation-delay:-1s">Ciao</span>
+<span class="float" style="position:absolute;left:62%;top:8%;font-family:'Syne','Work Sans',sans-serif;font-weight:500;font-size:22px;color:#F4F1E8;animation-delay:-5s">Hola</span>
+<span class="float" style="position:absolute;left:12%;top:66%;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:30px;color:#F4F1E8;animation-delay:-3s">Zdravo</span>
+<span class="float" style="position:absolute;left:66%;top:78%;font-family:'Syne','Work Sans',sans-serif;font-weight:500;font-size:24px;color:#F2B705;animation-delay:-6s">Hej</span>
+</div>
+</div>
+<div class="tag">Motion graphics · ParlEU 2021</div>
+<h3 class="pt">Presidency titles and greetings</h3>
+<p class="pd">I animated the presidency logo for the opening titles of the conferences. I also animated greetings in the language of each member state.</p>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start"><a class="btn" href="https://www.dz-rs.si/wps/portal/Home/drugo/ParlEU2021">Open the ParlEU 2021 page</a><span style="font-size:14px;color:#A9A59A">Look for the video gallery section.</span></div>
+</div>
+
+<!-- Tetramax -->
+<div class="pcard" style="width:300px">
+<div class="poster" style="aspect-ratio:4/5;background:#0B0D12">
+<div class="art" style="position:absolute;inset:0">
+<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;overflow:visible" aria-hidden="true">
+<g stroke="#8B7CF8" stroke-width="2" stroke-linecap="round" opacity="0.8">
+<line x1="244" y1="100" x2="290" y2="100"></line><line x1="232.7" y1="142" x2="272.6" y2="165"></line><line x1="202" y1="172.7" x2="225" y2="212.6"></line><line x1="160" y1="184" x2="160" y2="230"></line><line x1="118" y1="172.7" x2="95" y2="212.6"></line><line x1="87.3" y1="142" x2="47.4" y2="165"></line><line x1="76" y1="100" x2="30" y2="100"></line><line x1="87.3" y1="58" x2="47.4" y2="35"></line><line x1="118" y1="27.3" x2="95" y2="-12.6"></line><line x1="160" y1="16" x2="160" y2="-30"></line><line x1="202" y1="27.3" x2="225" y2="-12.6"></line><line x1="232.7" y1="58" x2="272.6" y2="35"></line>
+</g>
+<circle cx="160" cy="100" r="74" fill="none" stroke="#8B7CF8" stroke-opacity="0.35" stroke-width="2"></circle>
+<circle cx="160" cy="100" r="52" fill="none" stroke="#8B7CF8" stroke-opacity="0.55" stroke-width="2"></circle>
+<circle cx="160" cy="100" r="34" fill="none" stroke="#FF1FB4" stroke-opacity="0.9" stroke-width="2"></circle>
+<circle cx="160" cy="100" r="18" fill="#FF1FB4"></circle>
+</svg>
+</div>
+<div style="position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(244,241,232,0.92);display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l12 7-12 7z" fill="#111111"></path></svg></div>
+</div>
+<div class="tag">Explainer · Faculty of Electrical Engineering</div>
+<h3 class="pt">Tetramax Corona</h3>
+<p class="pd">An animated video that explains a new technology from the faculty laboratories to people outside the lab.</p>
+<div><a class="btn" href="https://www.youtube.com/watch?v=nn6GBtN7Bas&amp;pp=ygUPdGV0cmFtYXggY29yb25h">Watch on YouTube</a></div>
+</div>
+
+<!-- SchoolME -->
+<div class="pcard" style="width:300px">
+<div class="poster" style="aspect-ratio:4/5;background:#EAF1FB">
+<div class="art" style="position:absolute;inset:0">
+<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%" aria-hidden="true">
+<rect x="24" y="24" width="150" height="72" rx="12" fill="#FFFFFF"></rect><rect x="40" y="40" width="70" height="8" rx="4" fill="#2F5BFF"></rect><rect x="40" y="58" width="110" height="6" rx="3" fill="#C9D6EA"></rect><rect x="40" y="72" width="80" height="6" rx="3" fill="#C9D6EA"></rect>
+<rect x="24" y="108" width="150" height="72" rx="12" fill="#FFFFFF"></rect><rect x="40" y="124" width="60" height="8" rx="4" fill="#FF1FB4"></rect><rect x="40" y="142" width="110" height="6" rx="3" fill="#C9D6EA"></rect><rect x="40" y="156" width="90" height="6" rx="3" fill="#C9D6EA"></rect>
+<circle cx="238" cy="100" r="50" fill="#FFFFFF"></circle><circle cx="238" cy="100" r="30" fill="none" stroke="#C9D6EA" stroke-width="10"></circle><circle cx="238" cy="100" r="30" fill="none" stroke="#F2B705" stroke-width="10" stroke-dasharray="130 190" stroke-linecap="round" transform="rotate(-90 238 100)"></circle>
+</svg>
+</div>
+</div>
+<div class="tag">UI and UX · Video</div>
+<h3 class="pt">SchoolME</h3>
+<p class="pd">I designed the interface and the user experience for this project. It also sparked my love for infographics and animation.</p>
+<div><a class="btn" href="https://lnkd.in/p/dUnUPtHN">Watch the video</a></div>
+</div>
+
+<!-- Doncic -->
+<div class="pcard" style="width:300px">
+<div class="poster" style="aspect-ratio:4/5;background:#101A33">
+<div class="art" style="position:absolute;inset:0">
+<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;overflow:visible" aria-hidden="true">
+<g fill="none" stroke="#F4F1E8" stroke-opacity="0.45" stroke-width="2">
+<rect x="100" y="110" width="120" height="120"></rect><circle cx="160" cy="110" r="40"></circle><path d="M50 230 A110 110 0 0 1 270 230"></path><line x1="-40" y1="206" x2="360" y2="206"></line>
+</g>
+</svg>
+</div>
+<div style="position:absolute;left:14px;top:14px;width:26px;height:26px;border-left:3px solid #F4F1E8;border-top:3px solid #F4F1E8"></div>
+<div style="position:absolute;right:14px;top:14px;width:26px;height:26px;border-right:3px solid #F4F1E8;border-top:3px solid #F4F1E8"></div>
+<div style="position:absolute;left:14px;bottom:14px;width:26px;height:26px;border-left:3px solid #F4F1E8;border-bottom:3px solid #F4F1E8"></div>
+<div style="position:absolute;right:14px;bottom:14px;width:26px;height:26px;border-right:3px solid #F4F1E8;border-bottom:3px solid #F4F1E8"></div>
+<div style="position:absolute;left:54px;top:18px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;letter-spacing:0.12em"><span class="pulse" style="width:12px;height:12px;border-radius:50%;background:#E5483A;display:inline-block"></span>REC</div>
+</div>
+<div class="tag">Live event · Camera</div>
+<h3 class="pt">The Dončić contract conference</h3>
+<p class="pd">I worked as a camera operator at the conference where Luka Dončić signed his contract with the Dallas Mavericks.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn" href="https://www.rtvslo.si/sport/kosarka/liga-nba/luka-doncic-podpisal-najvisjo-pogodbo-v-slovenski-sportni-zgodovini/590283">Read the story</a><a class="btn" href="https://img.rtvcdn.si/_up/upload/2021/08/10/65915723.jpg">See the photo</a></div>
+</div>
+
+</div>
+
+<div style="max-width:1200px;margin:24px auto 0;padding:0 32px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px">
+<div class="tag">Also in the reel</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<span style="padding:10px 18px;border:1px solid rgba(244,241,232,0.3);border-radius:999px;font-size:15px">Video addresses and conference summaries for ParlEU 2022</span>
+<span style="padding:10px 18px;border:1px solid rgba(244,241,232,0.3);border-radius:999px;font-size:15px">Videographer at a NATO conference in 2025</span>
+<span style="padding:10px 18px;border:1px solid rgba(244,241,232,0.3);border-radius:999px;font-size:15px">Photography at sessions and events</span>
+<span style="padding:10px 18px;border:1px solid rgba(244,241,232,0.3);border-radius:999px;font-size:15px">Interactive PDF curricula for a digital walk</span>
+<span style="padding:10px 18px;border:1px solid rgba(244,241,232,0.3);border-radius:999px;font-size:15px">Storyboard for a children's cartoon</span>
+<span style="padding:10px 18px;border:1px solid rgba(244,241,232,0.3);border-radius:999px;font-size:15px">Seasonal posters for a dance club</span>
+</div>
+</div>
+</div>
+
+<!-- BANNERS -->
+<div id="banners" style="max-width:1200px;margin:0 auto;padding:128px 32px 24px;box-sizing:border-box">
+<h2 style="margin:0;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:clamp(52px,13vw,190px);line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase">Banners</h2>
+<p style="margin:24px 0 48px;max-width:640px;color:#B9B4A6">Concept banners for a made up ice cream brand. They are pure HTML and CSS, so they stay light and loop forever.</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
+
+<!-- Banner A 300x250 -->
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="bn" style="width:300px;height:250px;background:#FF1FB4;font-family:'Syne','Work Sans',sans-serif;color:#111111">
+<div class="float" style="position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:#F2B705"></div>
+<div class="f1" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:10px">
+<div style="font-weight:800;font-size:46px;line-height:0.92;text-transform:uppercase">Mango<br>Moon</div>
+<div style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:15px">Ice cream, but louder.</div>
+</div>
+<div class="f2" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:10px">
+<div style="font-weight:800;font-size:58px;line-height:0.9;text-transform:uppercase">20%<br>off</div>
+<div style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:15px">This weekend only.</div>
+</div>
+<div class="bump" style="position:absolute;left:24px;bottom:22px;background:#111111;color:#F4F1E8;font-family:'Work Sans',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px">Shop now</div>
+</div>
+<div class="tag">Banner 300 by 250</div>
+</div>
+
+<!-- Banner B 300x250 -->
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="bn" style="width:300px;height:250px;background:#111111;border:1px solid rgba(244,241,232,0.2);box-sizing:border-box;font-family:'Syne','Work Sans',sans-serif;color:#F4F1E8">
+<div class="grow" style="position:absolute;right:-30px;bottom:-30px;width:180px;height:180px;border-radius:50%;background:#00E000"></div>
+<div class="f1" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px">
+<div style="font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#00E000">New flavour</div>
+<div style="font-weight:800;font-size:40px;line-height:0.95;text-transform:uppercase">Lime<br>Lightning</div>
+</div>
+<div class="f2" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px">
+<div style="font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#00E000">In stores now</div>
+<div style="font-weight:800;font-size:40px;line-height:0.95;text-transform:uppercase">Find it<br>first</div>
+</div>
+<div class="bump" style="position:absolute;left:24px;bottom:22px;background:#FF1FB4;color:#111111;font-family:'Work Sans',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px">Find a store</div>
+</div>
+<div class="tag">Banner 300 by 250</div>
+</div>
+
+<!-- Banner C 160x400 -->
+<div style="display:flex;flex-direction:column;gap:12px">
+<div class="bn" style="width:160px;height:250px;background:#F2B705;font-family:'Syne','Work Sans',sans-serif;color:#111111">
+<svg class="spin" viewBox="0 0 100 100" style="position:absolute;left:-30px;bottom:-30px;width:120px;height:120px" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#111111" stroke-width="6" stroke-dasharray="14 10"></circle></svg>
+<div class="f1" style="position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+<div style="font-weight:800;font-size:30px;line-height:0.95;text-transform:uppercase">Scoop<br>it up</div>
+</div>
+<div class="f2" style="position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:8px">
+<div style="font-weight:800;font-size:30px;line-height:0.95;text-transform:uppercase">Three<br>flavours</div>
+</div>
+<div class="bump" style="position:absolute;right:16px;top:18px;width:36px;height:36px;border-radius:50%;background:#111111;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#F4F1E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+</div>
+<div class="tag">Banner 160 by 250</div>
+</div>
+
+</div>
+
+<!-- Leaderboard -->
+<div style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+<div style="max-width:100%;overflow-x:auto">
+<div class="bn" style="width:728px;height:90px;background:#2F5BFF;font-family:'Syne','Work Sans',sans-serif;color:#F4F1E8">
+<div class="float" style="position:absolute;left:-20px;top:-30px;width:110px;height:110px;border-radius:50%;background:#FF1FB4"></div>
+<div style="position:absolute;left:40px;top:0;bottom:0;display:flex;align-items:center;font-weight:800;font-size:28px;text-transform:uppercase;letter-spacing:-0.01em">Mango Moon</div>
+<div class="f1" style="position:absolute;left:260px;top:0;bottom:0;display:flex;align-items:center;font-weight:700;font-size:22px">Ice cream, but louder.</div>
+<div class="f2" style="position:absolute;left:260px;top:0;bottom:0;display:flex;align-items:center;font-weight:700;font-size:22px">Now in three new flavours.</div>
+<div class="bump" style="position:absolute;right:24px;top:24px;background:#F2B705;color:#111111;font-family:'Work Sans',sans-serif;font-weight:700;font-size:15px;padding:11px 22px;border-radius:999px">Shop now</div>
+</div>
+</div>
+<div class="tag">Leaderboard 728 by 90</div>
+</div>
+</div>
+
+<!-- BLEND -->
+<div style="position:relative;max-width:1200px;margin:0 auto;padding:96px 32px;box-sizing:border-box;min-height:640px;display:flex;align-items:center;justify-content:center">
+<span class="float" style="position:absolute;left:6%;top:6%;font-family:'Bebas Neue','Work Sans',sans-serif;font-size:44px;color:#F4F1E8;opacity:0.75">NOLIMIT</span>
+<span class="float" style="position:absolute;left:38%;top:3%;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:40px;color:#8FA67A;animation-delay:-2s">Pr Lavrič</span>
+<span class="float" style="position:absolute;right:6%;top:8%;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:30px;color:#F4F1E8;opacity:0.75;animation-delay:-4s">ParlEU</span>
+<span class="float" style="position:absolute;left:4%;bottom:10%;font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:28px;color:#F2B705;animation-delay:-1s">Zlata nit</span>
+<span class="float" style="position:absolute;left:34%;bottom:3%;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:34px;color:#F4F1E8;opacity:0.75;animation-delay:-5s">Lipa</span>
+<span class="float" style="position:absolute;right:20%;bottom:8%;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:34px;color:#D8C7A3;animation-delay:-3s">Miran Kondrič</span>
+<span class="float" style="position:absolute;right:4%;bottom:26%;font-family:'Work Sans',sans-serif;font-weight:700;font-size:22px;letter-spacing:0.08em;color:#4FB6A6;animation-delay:-6s">SchoolME</span>
+<div style="position:relative;max-width:880px;text-align:center">
+<svg width="86" height="56" viewBox="0 0 66 48" style="position:absolute;left:50%;top:-52px;margin-left:-43px" aria-hidden="true"><path class="thread" pathLength="1" d="M4 42 L10 8 L24 28 L38 4 L50 28 L62 10 L60 44 Z" fill="none" stroke="var(--acc)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<h2 style="margin:0;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:clamp(30px,6vw,76px);line-height:0.98;letter-spacing:-0.02em;text-transform:uppercase">Blending it all together? I do it every day.</h2>
+</div>
+</div>
+
+<!-- WEB -->
+<div id="web" style="padding-top:32px">
+<div style="max-width:1200px;margin:0 auto;padding:0 32px;box-sizing:border-box">
+<h2 style="margin:0;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:clamp(72px,17vw,230px);line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase">Web</h2>
+<p style="margin:24px 0 40px;max-width:620px;color:#B9B4A6">Sites for clients and for myself. I design them and I make sure they go live.</p>
+</div>
+<div class="strip" style="padding-left:max(32px,calc((100% - 1200px) / 2 + 32px));padding-right:32px">
+
+<!-- NOLIMIT -->
+<div class="pcard" style="width:400px">
+<div class="poster" style="background:#0B0D12;border-radius:10px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1C212C"><span style="width:10px;height:10px;border-radius:50%;background:#E5483A;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#F2B705;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#59B36A;display:inline-block"></span><span style="margin-left:10px;font-size:13px;color:#A9A59A">no-limit.si</span></div>
+<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#FFFFFF">
+<div class="art" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 28px;gap:10px">
+<div style="font-family:'Bebas Neue','Work Sans',sans-serif;font-size:76px;line-height:0.9;color:#111111;letter-spacing:0.02em">NOLIMIT</div>
+<div style="width:60px;height:6px;background:#111111"></div>
+<div style="font-size:13px;color:#555555;letter-spacing:0.1em;text-transform:uppercase">Car consultancy</div>
+</div>
+</div>
+</div>
+<div class="tag">Client · Car consultancy</div>
+<h3 class="pt">NOLIMIT</h3>
+<p class="pd">A minimal black and white site where strong type leads the way.</p>
+<div><a class="btn" href="https://www.no-limit.si/">Visit the site</a></div>
+</div>
+
+<!-- Radar -->
+<div class="pcard" style="width:400px">
+<div class="poster" style="background:#0B0D12;border-radius:10px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1C212C"><span style="width:10px;height:10px;border-radius:50%;background:#E5483A;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#F2B705;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#59B36A;display:inline-block"></span><span style="margin-left:10px;font-size:13px;color:#A9A59A">no-limit-nepremicnine.vercel.app</span></div>
+<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#0F1115">
+<div class="art" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;gap:12px;box-sizing:border-box">
+<div style="display:flex;align-items:center;gap:10px"><span class="pulse" style="width:14px;height:14px;border-radius:50%;background:#3DD6A5;display:inline-block"></span><span style="font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:26px;color:#F4F1E8">Radar</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1B2030;border-radius:10px"><div style="width:36px;height:36px;border-radius:8px;background:#2B3350"></div><div style="flex:1"><div style="height:8px;width:70%;background:#F4F1E8;border-radius:4px;margin-bottom:6px"></div><div style="height:6px;width:45%;background:#5A6180;border-radius:3px"></div></div><div style="font-size:12px;font-weight:700;color:#3DD6A5">NEW</div></div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1B2030;border-radius:10px"><div style="width:36px;height:36px;border-radius:8px;background:#2B3350"></div><div style="flex:1"><div style="height:8px;width:55%;background:#F4F1E8;border-radius:4px;margin-bottom:6px"></div><div style="height:6px;width:35%;background:#5A6180;border-radius:3px"></div></div></div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1B2030;border-radius:10px"><div style="width:36px;height:36px;border-radius:8px;background:#2B3350"></div><div style="flex:1"><div style="height:8px;width:62%;background:#F4F1E8;border-radius:4px;margin-bottom:6px"></div><div style="height:6px;width:40%;background:#5A6180;border-radius:3px"></div></div></div>
+</div>
+</div>
+</div>
+<div class="tag">Client · Real estate alerts</div>
+<h3 class="pt">NOLIMIT Radar</h3>
+<p class="pd">A real estate alert website that connects to an existing scraping algorithm.</p>
+<div><a class="btn" href="https://no-limit-nepremicnine.vercel.app/">Visit the site</a></div>
+</div>
+
+<!-- Pr Lavric -->
+<div class="pcard" style="width:400px">
+<div class="poster" style="background:#0B0D12;border-radius:10px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1C212C"><span style="width:10px;height:10px;border-radius:50%;background:#E5483A;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#F2B705;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#59B36A;display:inline-block"></span><span style="margin-left:10px;font-size:13px;color:#A9A59A">pr-lavric.vercel.app</span></div>
+<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#E6EAE4">
+<div class="art" style="position:absolute;inset:0">
+<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMax slice" style="position:absolute;left:0;bottom:0;width:100%;height:100%" aria-hidden="true"><path d="M0 200 L0 150 C60 110 110 130 170 120 C230 110 280 90 320 110 L320 200Z" fill="#8FA67A"></path><path d="M0 200 L0 175 C70 150 130 170 200 160 C260 152 290 150 320 160 L320 200Z" fill="#2F4A3A"></path></svg>
+<div style="position:absolute;left:24px;top:22px;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;font-size:56px;line-height:0.95;color:#2F4A3A">Pr Lavrič</div>
+<div style="display:flex;gap:8px"><span style="width:18px;height:18px;border-radius:50%;background:#2F4A3A;display:inline-block"></span><span style="width:18px;height:18px;border-radius:50%;background:#D9A441;display:inline-block"></span><span style="width:18px;height:18px;border-radius:50%;background:#A8A39A;display:inline-block"></span><span style="width:18px;height:18px;border-radius:50%;background:#8FA67A;display:inline-block"></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="tag">Client · Eco tourist farm</div>
+<h3 class="pt">Pr Lavrič</h3>
+<p class="pd">A warm brand identity and a website with an automatic gallery and a contact form. I also helped with the HDR photography of the interiors.</p>
+<div><a class="btn" href="https://pr-lavric.vercel.app/">Visit the site</a></div>
+</div>
+
+<!-- Miran -->
+<div class="pcard" style="width:400px">
+<div class="poster" style="background:#0B0D12;border-radius:10px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1C212C"><span style="width:10px;height:10px;border-radius:50%;background:#E5483A;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#F2B705;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#59B36A;display:inline-block"></span><span style="margin-left:10px;font-size:13px;color:#A9A59A">miran-kodric.vercel.app</span></div>
+<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#F2E8D5">
+<div class="art" style="position:absolute;inset:0;display:flex;align-items:center;gap:20px;padding:0 26px">
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:42px;line-height:1;color:#4A3524">Miran Kondrič</div>
+<div style="width:48px;height:3px;background:#8A5F2B"></div>
+<div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7A6550">Mini projects and a book</div>
+</div>
+<div style="display:flex;align-items:stretch;flex:none"><div style="width:10px;background:#6B4A2F;border-radius:3px 0 0 3px"></div><div style="width:84px;height:116px;background:#FFFDF6;border:2px solid #6B4A2F;border-left:none;display:flex;align-items:center;justify-content:center"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="16" cy="18" r="11" fill="#8A5F2B"></circle><rect x="24" y="22" width="6" height="14" rx="3" fill="#6B4A2F" transform="rotate(-35 24 22)"></rect><circle cx="32" cy="10" r="3.5" fill="#C8553D"></circle></svg></div></div>
+</div>
+</div>
+</div>
+<div class="tag">Client · Author and professor</div>
+<h3 class="pt">Miran Kondrič</h3>
+<p class="pd">A personal site with a page turning flipbook of his book and room for his mini projects.</p>
+<div><a class="btn" href="https://miran-kodric.vercel.app/">Visit the site</a></div>
+</div>
+
+<!-- Zlata nit -->
+<div class="pcard" style="width:400px">
+<div class="poster" style="background:#0B0D12;border-radius:10px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1C212C"><span style="width:10px;height:10px;border-radius:50%;background:#E5483A;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#F2B705;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#59B36A;display:inline-block"></span><span style="margin-left:10px;font-size:13px;color:#A9A59A">zlatanit.vercel.app</span></div>
+<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#1B1F2A">
+<div class="art" style="position:absolute;inset:0">
+<div class="float" style="position:absolute;left:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:#E0B34A;opacity:0.18;filter:blur(40px)"></div>
+<div class="float" style="position:absolute;right:-20px;bottom:-30px;width:200px;height:200px;border-radius:50%;background:#6C8AD6;opacity:0.22;filter:blur(46px);animation-delay:-3s"></div>
+<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true"><path class="thread" pathLength="1" d="M-10 150 C60 40 120 190 180 90 S280 40 330 80" fill="none" stroke="#E0B34A" stroke-width="2.5" stroke-linecap="round"></path></svg>
+<div style="position:absolute;left:24px;bottom:22px;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:42px;letter-spacing:-0.02em;color:#F4F1E8">Zlata nit</div>
+</div>
+</div>
+</div>
+<div class="tag">Own studio</div>
+<h3 class="pt">Zlata nit</h3>
+<p class="pd">My own studio site with a Ghibli inspired look and a golden thread that draws itself. It works in Slovenian and English.</p>
+<div><a class="btn" href="https://zlatanit.vercel.app/">Visit the site</a></div>
+</div>
+
+<!-- Lipa -->
+<div class="pcard" style="width:400px">
+<div class="poster" style="background:#0B0D12;border-radius:10px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1C212C"><span style="width:10px;height:10px;border-radius:50%;background:#E5483A;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#F2B705;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#59B36A;display:inline-block"></span><span style="margin-left:10px;font-size:13px;color:#A9A59A">lipa-slo.vercel.app</span></div>
+<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#CFE6F5">
+<div class="art" style="position:absolute;inset:0">
+<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMax slice" style="position:absolute;left:0;bottom:0;width:100%;height:100%" aria-hidden="true">
+<path d="M0 200 L0 140 L60 100 L100 125 L160 40 L205 105 L250 80 L320 130 L320 200Z" fill="#7C95B8"></path>
+<path d="M150 58 L160 40 L172 62 L160 56Z" fill="#FFFFFF"></path>
+<path d="M0 200 L0 165 L70 140 L130 160 L200 135 L320 165 L320 200Z" fill="#3E6B4E"></path>
+<g fill="#F2B705" stroke="#111111" stroke-width="2"><circle cx="40" cy="186" r="7"></circle><circle cx="95" cy="172" r="7"></circle><circle cx="150" cy="160" r="7"></circle><circle cx="205" cy="145" r="7"></circle><circle cx="252" cy="128" r="7"></circle></g>
+</svg>
+<div style="position:absolute;left:20px;top:18px;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:36px;color:#1B3A2A;letter-spacing:-0.02em">Lipa</div>
+<div style="position:absolute;left:20px;top:62px;font-size:13px;font-weight:700;letter-spacing:0.1em;color:#1B3A2A">A1 · A2 · B1 · B2 · C1</div>
+</div>
+</div>
+</div>
+<div class="tag">Own project · Learning</div>
+<h3 class="pt">Lipa</h3>
+<p class="pd">A course site for learning Slovenian from A1 to C1. Each level is a step along a mountain path that ends on Triglav.</p>
+<div><a class="btn" href="https://lipa-slo.vercel.app/">Visit the site</a></div>
+</div>
+
+<!-- Pri Tanji in Sanji -->
+<div class="pcard" style="width:400px">
+<div class="poster" style="background:#0B0D12;border-radius:10px">
+<div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1C212C"><span style="width:10px;height:10px;border-radius:50%;background:#E5483A;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#F2B705;display:inline-block"></span><span style="width:10px;height:10px;border-radius:50%;background:#59B36A;display:inline-block"></span><span style="margin-left:10px;font-size:13px;color:#A9A59A">prtanjiinsanji.vercel.app</span></div>
+<div style="position:relative;aspect-ratio:16/10;overflow:hidden;background:#FFF3E0">
+<div class="art" style="position:absolute;inset:0;display:flex;align-items:center;gap:22px;padding:0 28px">
+<div style="display:flex;flex:none"><span class="float" style="width:70px;height:70px;border-radius:50%;background:#F08A6B;display:inline-block"></span><span class="float" style="width:70px;height:70px;border-radius:50%;background:#4FB6A6;display:inline-block;margin-left:-16px;animation-delay:-3s"></span></div>
+<div style="font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:32px;line-height:1;letter-spacing:-0.02em;color:#3A2E2A">Pri Tanji in Sanji</div>
+</div>
+</div>
+</div>
+<div class="tag">Brand and web · Childcare</div>
+<h3 class="pt">Pri Tanji in Sanji</h3>
+<p class="pd">The full business concept, brand identity and website for a twin childcare studio in Cerknica.</p>
+<div><a class="btn" href="https://prtanjiinsanji.vercel.app/">Visit the site</a></div>
+</div>
+
+</div>
+</div>
+
+<!-- HOW I WORK -->
+<div style="max-width:1200px;margin:0 auto;padding:96px 32px 24px;box-sizing:border-box">
+<h2 style="margin:0 0 48px;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:clamp(40px,8vw,104px);line-height:0.95;letter-spacing:-0.03em;text-transform:uppercase">How I work</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0">
+<div style="padding:8px 32px 8px 0;display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:28px">Design first</div>
+<p style="margin:0;color:#D9D5C9">I start with the idea and the audience. Layout and type and motion follow from there.</p>
+</div>
+<div style="padding:8px 32px;border-left:1px solid rgba(244,241,232,0.2);display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:28px">Code and AI, honestly</div>
+<p style="margin:0;color:#D9D5C9">I know the basics of HTML, CSS and JavaScript and I understand what the code does. For larger builds I use AI tools and direct them with clear briefs. I check the results and correct them myself.</p>
+</div>
+<div style="padding:8px 0 8px 32px;border-left:1px solid rgba(244,241,232,0.2);display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:28px">I deliver</div>
+<p style="margin:0;color:#D9D5C9">The sites go live and work for the client. I plan my time well and I keep to deadlines.</p>
+</div>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" style="max-width:1200px;margin:0 auto;padding:96px 32px 96px;box-sizing:border-box">
+<div class="tag" style="margin-bottom:24px">About</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;margin-bottom:48px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:22px">National Assembly of Slovenia</div><div style="color:#B9B4A6">Multimedia professional since 2021. Video, animation, photography, audio and web content.</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:22px">Zlata nit</div><div style="color:#B9B4A6">My own small studio for people who have an idea and passion but cannot create it alone.</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font-family:'Syne','Work Sans',sans-serif;font-weight:700;font-size:22px">Marketing studies</div><div style="color:#B9B4A6">I am studying marketing, so I think about the goal and the audience behind everything I make.</div></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<span style="padding:8px 16px;background:#1E1E1E;border-radius:999px;font-size:15px">Adobe Creative Cloud</span>
+<span style="padding:8px 16px;background:#1E1E1E;border-radius:999px;font-size:15px">DaVinci Resolve</span>
+<span style="padding:8px 16px;background:#1E1E1E;border-radius:999px;font-size:15px">HTML, CSS and JavaScript basics</span>
+<span style="padding:8px 16px;background:#1E1E1E;border-radius:999px;font-size:15px">AI assisted web builds</span>
+<span style="padding:8px 16px;background:#1E1E1E;border-radius:999px;font-size:15px">Umbraco CMS</span>
+<span style="padding:8px 16px;background:#1E1E1E;border-radius:999px;font-size:15px">GitHub and Vercel</span>
+</div>
+<p style="margin:20px 0 0;color:#B9B4A6">Languages: Slovenian (native), English (working level) and Dutch (A2).</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" style="background:var(--ftr);color:#111111">
+<div style="max-width:1200px;margin:0 auto;padding:88px 32px 72px;box-sizing:border-box">
+<h2 style="margin:0 0 24px;font-family:'Syne','Work Sans',sans-serif;font-weight:800;font-size:clamp(34px,6.5vw,88px);line-height:0.98;letter-spacing:-0.02em;text-transform:uppercase;color:#111111">Don't think, add Teja.</h2>
+<a href="mailto:teja.perko1@gmail.com" style="font-family:'Syne','Work Sans',sans-serif;font-weight:500;font-size:clamp(18px,4.2vw,56px);text-transform:uppercase;color:#111111;overflow-wrap:anywhere">teja.perko1@gmail.com</a>
+<div style="display:flex;flex-wrap:wrap;gap:12px 48px;margin-top:64px;font-size:15px">
+<a href="#top" style="color:#111111">Home</a>
+<a href="#work" style="color:#111111">Work</a>
+<a href="#banners" style="color:#111111">Banners</a>
+<a href="#web" style="color:#111111">Web</a>
+<a href="#about" style="color:#111111">About</a>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF1FB4","options":["#FF1FB4","#F2B705","#00E000","#2F5BFF"]},"footer":{"editor":"color","default":"#00E000","options":["#00E000","#FF1FB4","#F2B705","#F4F1E8"]},"$preview":{"width":1360,"height":6800}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#FF1FB4', footer: this.props.footer ?? '#00E000' };
+}
+}
+</script>
+</body>
+</html>
