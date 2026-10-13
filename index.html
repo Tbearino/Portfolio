@@ -44,7 +44,25 @@ a{color:#F4F1E8}
 @keyframes tick{to{transform:translateX(-50%)}}
 .pulse{animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
-.bn{position:relative;overflow:hidden;flex:none;border-radius:6px}
+.bn{position:relative;overflow:hidden;flex:none;border-radius:6px;container-type:size;font-family:'Syne','Work Sans',sans-serif}
+.bn .layer{position:absolute;inset:0;display:flex;flex-direction:column;box-sizing:border-box;min-width:0}
+.bn .h{font-weight:800;text-transform:uppercase;line-height:0.95;white-space:nowrap}
+.bn .s{font-family:'Work Sans',sans-serif;font-weight:700;white-space:nowrap}
+.bn .btn{position:absolute;font-family:'Work Sans',sans-serif;font-weight:700;border-radius:999px;white-space:nowrap}
+.bn-a .layer,.bn-b .layer{padding:8cqw 8cqw 0;gap:3cqw}
+.bn-a .layer{justify-content:flex-start;padding-top:22cqh}
+.bn-a .h{font-size:12cqw}
+.bn-a .s{font-size:5cqw}
+.bn-b .h{font-size:8.8cqw}
+.bn-b .k{font-weight:700;font-size:4.4cqw;letter-spacing:0.14em;text-transform:uppercase;color:#00E000;white-space:nowrap}
+.bn-a .btn,.bn-b .btn{left:8cqw;bottom:8cqh;font-size:4.6cqw;padding:3.2cqw 6cqw}
+.bn-c .layer{padding:22cqw 11cqw 0 11cqw}
+.bn-c .h{font-size:8.4cqw}
+.bn-c .btn{right:10cqw;bottom:10cqw;width:20cqw;height:20cqw;padding:0;display:flex;align-items:center;justify-content:center}
+.bn-l .logo{position:absolute;left:5cqw;top:0;bottom:0;display:flex;align-items:center;font-weight:800;font-size:22cqh;text-transform:uppercase;white-space:nowrap}
+.bn-l .msg{position:absolute;left:42cqw;right:25cqw;top:0;bottom:0;display:flex;align-items:center;font-family:'Work Sans',sans-serif;font-weight:700;font-size:21cqh;line-height:1.1}
+.bn-l .btn{right:3.5cqw;top:0;bottom:0;margin:auto 0;height:fit-content;font-size:16cqh;padding:12cqh 6cqw}
+.bn-l .circ{position:absolute;left:-20px;top:-30px;width:110px;height:110px;border-radius:50%;background:#FF1FB4}
 .f1{animation:f1 8s infinite}
 @keyframes f1{0%,40%{opacity:1;transform:none}46%,94%{opacity:0;transform:translateY(-22px)}100%{opacity:1;transform:none}}
 .f2{animation:f2 8s infinite;opacity:0}
@@ -251,56 +269,54 @@ a{color:#F4F1E8}
 <p style="margin:24px 0 48px;max-width:640px;color:#B9B4A6">Concept banners for a made up ice cream brand. They are pure HTML and CSS, so they stay light and loop forever.</p>
 
 <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start">
-
 <!-- Banner A 300x250 -->
 <div style="display:flex;flex-direction:column;gap:12px">
-<div class="bn" style="width:300px;height:250px;background:#FF1FB4;font-family:'Syne','Work Sans',sans-serif;color:#111111">
+<div class="bn bn-a" style="width:300px;height:250px;background:#FF1FB4;color:#111111">
 <div class="float" style="position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:#F2B705"></div>
-<div class="f1" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:10px">
-<div style="font-weight:800;font-size:46px;line-height:0.92;text-transform:uppercase">Mango<br>Moon</div>
-<div style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:15px">Ice cream, but louder.</div>
-</div>
-<div class="f2" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:10px">
-<div style="font-weight:800;font-size:58px;line-height:0.9;text-transform:uppercase">20%<br>off</div>
-<div style="font-family:'Work Sans',sans-serif;font-weight:700;font-size:15px">This weekend only.</div>
-</div>
-<div class="bump" style="position:absolute;left:24px;bottom:22px;background:#111111;color:#F4F1E8;font-family:'Work Sans',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px">Shop now</div>
+<div class="layer f1"><div class="h">Mango<br>Moon</div><div class="s">Ice cream, but louder.</div></div>
+<div class="layer f2"><div class="h">20%<br>off</div><div class="s">This weekend only.</div></div>
+<div class="btn bump" style="background:#111111;color:#F4F1E8">Shop now</div>
 </div>
 <div class="tag">Banner 300 by 250</div>
 </div>
 
 <!-- Banner B 300x250 -->
 <div style="display:flex;flex-direction:column;gap:12px">
-<div class="bn" style="width:300px;height:250px;background:#111111;border:1px solid rgba(244,241,232,0.2);box-sizing:border-box;font-family:'Syne','Work Sans',sans-serif;color:#F4F1E8">
-<div class="grow" style="position:absolute;right:-30px;bottom:-30px;width:180px;height:180px;border-radius:50%;background:#00E000"></div>
-<div class="f1" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px">
-<div style="font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#00E000">New flavour</div>
-<div style="font-weight:800;font-size:40px;line-height:0.95;text-transform:uppercase">Lime<br>Lightning</div>
-</div>
-<div class="f2" style="position:absolute;inset:0;padding:24px;display:flex;flex-direction:column;justify-content:flex-start;gap:8px">
-<div style="font-weight:700;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#00E000">In stores now</div>
-<div style="font-weight:800;font-size:40px;line-height:0.95;text-transform:uppercase">Find it<br>first</div>
-</div>
-<div class="bump" style="position:absolute;left:24px;bottom:22px;background:#FF1FB4;color:#111111;font-family:'Work Sans',sans-serif;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px">Find a store</div>
+<div class="bn bn-b" style="width:300px;height:250px;background:#111111;border:1px solid rgba(244,241,232,0.2);box-sizing:border-box;color:#F4F1E8">
+<div class="grow" style="position:absolute;right:-30px;bottom:-30px;width:150px;height:150px;border-radius:50%;background:#00E000"></div>
+<div class="layer f1"><div class="k">New flavour</div><div class="h">Lime<br>Lightning</div></div>
+<div class="layer f2"><div class="k">In stores now</div><div class="h">Find it<br>first</div></div>
+<div class="btn bump" style="background:#FF1FB4;color:#111111">Find a store</div>
 </div>
 <div class="tag">Banner 300 by 250</div>
 </div>
 
-<!-- Banner C 160x400 -->
+<!-- Banner C 160x250 -->
 <div style="display:flex;flex-direction:column;gap:12px">
-<div class="bn" style="width:160px;height:250px;background:#F2B705;font-family:'Syne','Work Sans',sans-serif;color:#111111">
-<svg class="spin" viewBox="0 0 100 100" style="position:absolute;left:-30px;bottom:-30px;width:120px;height:120px" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#111111" stroke-width="6" stroke-dasharray="14 10"></circle></svg>
-<div class="f1" style="position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:8px">
-<div style="font-weight:800;font-size:30px;line-height:0.95;text-transform:uppercase">Scoop<br>it up</div>
-</div>
-<div class="f2" style="position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;gap:8px">
-<div style="font-weight:800;font-size:30px;line-height:0.95;text-transform:uppercase">Three<br>flavours</div>
-</div>
-<div class="bump" style="position:absolute;right:16px;top:18px;width:36px;height:36px;border-radius:50%;background:#111111;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#F4F1E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<div class="bn bn-c" style="width:160px;height:250px;background:#F2B705;color:#111111">
+<svg class="spin" viewBox="0 0 100 100" style="position:absolute;left:-30px;bottom:-30px;width:120px;height:120px" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#111111" stroke-width="6" stroke-dasharray="14 10"/></svg>
+<div class="layer f1"><div class="h">Scoop<br>it up</div></div>
+<div class="layer f2"><div class="h">Three<br>flavours</div></div>
+<div class="btn bump" style="background:#111111"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="#F4F1E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
 </div>
 <div class="tag">Banner 160 by 250</div>
 </div>
 
+</div>
+
+<!-- Leaderboard -->
+<div style="margin-top:40px;display:flex;flex-direction:column;gap:12px">
+<div style="max-width:100%;overflow-x:auto">
+<div class="bn bn-l" style="width:728px;height:90px;background:#2F5BFF;color:#F4F1E8">
+<div class="circ float"></div>
+<div class="logo">Mango Moon</div>
+<div class="msg f1">Ice cream, but louder.</div>
+<div class="msg f2">Now in three new flavours.</div>
+<div class="btn bump" style="background:#F2B705;color:#111111">Shop now</div>
+</div>
+</div>
+<div class="tag">Leaderboard 728 by 90</div>
+</div>
 </div>
 
 <!-- Leaderboard -->
